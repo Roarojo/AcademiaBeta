@@ -17,7 +17,7 @@ class CrearCuentaContoller extends Controller
             'email'=>'required|unique:users|email|max:60',
             'password'=>'required|confirmed|min:3'
         ]);
-        $persona = 'Admin';
+        $persona = 'Profesor';
         //dd('Usuario creado');
         //Esto es igual que si escribieramos INSERT INTO Usuarios...
         User::create([
