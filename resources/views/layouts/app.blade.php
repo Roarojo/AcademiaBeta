@@ -33,7 +33,9 @@
 <header class="p-2 border-b bg-white shadow">
   <div class="container mx-auto flex justify-between p-1">
     <div>
+      <a  href="{{ route('index') }}">
       <img src="{{asset('imagenes/tecjaliscologo.png')}}" alt="Front of men&#039;s Basic Tee in black." class="mx-auto object-cover object-center">
+       </a>
       <h3 class="text-2x1 font-black">
         Repositorio Academia Informatica
      </h3>
@@ -84,12 +86,12 @@
      
      @guest
          <nav class="flex gap-1 items-center">
-          <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('index') }}">
+         <!-- <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('index') }}">
             Login
           </a>
           <a class="font-bold uppercase text-gray-600 text-sm">
             
-          </a>
+          </a>-->
         <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('crear-cuenta') }}">
             Crear Cuenta
         </a>
