@@ -87,6 +87,9 @@
           <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('index') }}">
             Login
           </a>
+          <a class="font-bold uppercase text-gray-600 text-sm">
+            
+          </a>
         <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('crear-cuenta') }}">
             Crear Cuenta
         </a>
