@@ -82,7 +82,7 @@
         </nav>
      @endauth
      
-    <!-- @guest
+     @guest
          <nav class="flex gap-1 items-center">
           <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('index') }}">
             Login
@@ -91,7 +91,7 @@
             Crear Cuenta
         </a>
         </nav>
-     @endguest-->
+     @endguest
           
      
      
