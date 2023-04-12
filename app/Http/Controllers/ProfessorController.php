@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Professor;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,6 +16,14 @@ class ProfessorController extends Controller
     public function index()
     {
         //
+    }
+
+
+    public function editarperfil($user){
+
+        dd($user);
+
+
     }
 
     /**
@@ -36,7 +44,7 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+      /*  $request->validate([
             'name'=>'required|max:30',
             'perfil'=>'required|max:30',
         ]);
@@ -54,7 +62,7 @@ class ProfessorController extends Controller
             ]);
         }    
 
-            return back()->with('creado','Creado');
+            return back()->with('creado','Creado');*/
 
     }
 
@@ -64,9 +72,9 @@ class ProfessorController extends Controller
      * @param  \App\Models\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function show(Professor $professor)
+    public function show()
     {
-        $pro = Professor::all();
+        $pro = User::all();
         return view('professor',compact('pro'));
     }
 
@@ -79,8 +87,8 @@ class ProfessorController extends Controller
     public function edit($professor)
     {
       //  dd($professor);
-       $prof = Professor::find($professor);
-        return view('mostrarprofesor',compact('prof'));
+      // $prof = Professor::find($professor);
+       // return view('mostrarprofesor',compact('prof'));
     }
 
     /**
@@ -94,7 +102,7 @@ class ProfessorController extends Controller
     {
 
        // dd($professor);
-        $prof = Professor::find($professor);
+      /*  $prof = Professor::find($professor);
         $prof -> name = $request->name;
         if ($request->hasFile('image')){
             if ($prof->foto===NULL){
@@ -107,7 +115,7 @@ class ProfessorController extends Controller
         }
         $prof->perfil = $request->perfil;
         $prof->save();
-        return redirect()->route('post.index');
+        return redirect()->route('post.index');*/
     }
 
     /**
@@ -116,7 +124,8 @@ class ProfessorController extends Controller
      * @param  \App\Models\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Professor $prof)
+    
+    /*public function destroy( Professor $prof)
     {
        // dd('Eliminar profesor');
         if ($prof->foto===NULL){
@@ -127,5 +136,5 @@ class ProfessorController extends Controller
         }
         return back()->with('mensaje','eliminado');
        
-    }
+    }*/
 }

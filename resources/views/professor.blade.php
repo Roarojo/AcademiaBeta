@@ -10,13 +10,9 @@
     <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-3 lg:px-3">
     <div class="p-6 w-full max-w-md space-y-8 shadow-md border border-gray-200 rounded-lg">
       <div>
-        <img class="mx-auto h-36 w-auto " src="{{asset('imagenes/registrar.png')}}" alt="Practica con Laravel">
-        <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Crear Cuenta</h2>
+        <img class="mx-auto h-36 w-auto " src="{{asset('imagenes/registrar.png')}}" alt="Practica con Laravel">  
       </div>
-      <form class="mt-8 space-y-6" 
-             action="{{route('agregar-profesor')}}" 
-              method="POST"
-              enctype="multipart/form-data">
+      <form class="mt-8 space-y-6" action="{{route('crear-cuenta')}}" method="POST">
         @if (session('creado'))
         @push('scripts')
            <!--<script>
@@ -27,14 +23,14 @@
                Swal.fire({
                      position: 'top-end',
                      icon: 'success',
-                     title: 'Profesor fue creado correctamente',
+                     title: 'Usuario creado correctamente',
                      showConfirmButton: false,
                      timer: 1500
                    })
            </script>
          @endpush    
-     @endif
-        @csrf
+       @endif
+       @csrf
         <input type="hidden" name="remember" value="true">
         <div class="-space-y-px rounded-md shadow-sm">
           <div>
@@ -53,33 +49,45 @@
               @enderror
           </div>
           <div>
-            <label for="perfil" class="sr-only">Perfil</label>
+            <label for="email-address" class="sr-only">Email address</label>
             <input 
-              id="perfil" 
-              name="perfil" 
-              type="text"  
-              class="border p-3 w-full rounded-lg @error('perfil') border-red-500 @enderror" 
-              value="{{old('perfil')}}" 
-              placeholder="Escribe el perfil"/>
-              @error('perfil')
+              id="email-address" 
+              name="email" 
+              type="email" 
+              autocomplete="email" 
+              class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror" 
+              value="{{old('email')}}" 
+              placeholder="Escribe tu correo"/>
+              @error('email')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
                      {{$message}}
                 </p>
               @enderror
           </div>
           <div>
+            <label for="password" class="sr-only">Password</label>
             <input 
-            id="file_input" 
-            type="file"
-            name="image" 
-            class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
-            aria-describedby="file_input_help">
-        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF.</p>
-        @error('image')
-        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
-             {{$message}}
-        </p>
-      @enderror
+              id="password" 
+              name="password" 
+              type="password" 
+              autocomplete="current-password" 
+              class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror" 
+              placeholder="Escribe el Password"/>
+              @error('password')
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                     {{$message}}
+                </p>
+              @enderror
+          </div>
+          <div>
+            <label for="password_confirmation" class="sr-only">Confirmar Password</label>
+            <input 
+              id="password_confirmation" 
+              name="password_confirmation" 
+              type="password" 
+              autocomplete="current-password" 
+              class="border p-3 w-full rounded-lg" 
+              placeholder="Confirmar Password">
           </div>
         </div>
         <div>

@@ -12,6 +12,8 @@ use App\Http\Controllers\ModificarCuentaController;
 use App\Http\Controllers\MostrarUsuariosController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\MateriasController;
+use App\Http\Controllers\SemestreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::get('/', function () {
 
 Route::post('/', [ValidarContoller::class,'obtenerDatos'])->name('index');
 Route::get('acceso',[OtraVentanaContoller::class,'vincular'])->name('post.index');
+
+Route::get('perfil/{id}',[OtraVentanaContoller::class,'mostrarperfil'])->name('post.perfil');
 
 Route::get('crear',[CrearCuentaContoller::class,'mostrarDatos'])->name('crear-cuenta');
 Route::post('crear',[CrearCuentaContoller::class,'crearDatos'])->name('crear-cuenta');
@@ -64,4 +68,30 @@ Route::post('/mostrar-profesor/{prof}',[ProfessorController::class,'destroy'])->
 Route::post('/modificar-profesor/{prof}',[ProfessorController::class,'edit'])->name('mod.profesor');
 
 Route::post('/aplicar-profesor/{prof}',[ProfessorController::class,'update'])->name('aplicar.mod');
+
+
+//perfil
+
+Route::post('/modificar-perfil/{user}',[ProfessorController::class,'editarperfil'])->name('modificar-perfil');
+
+//Materias
+
+Route::get('/mostrar-materias',[MateriasController::class,'show'])->name('cargar.materias');
+
+Route::post('/guardar-materias',[MateriasController::class,'store'])->name('guardar.materia');
+
+//Usuarios
+
+Route::get('/mostrar-profesor',[ProfessorController::class,'show'])->name('mostrar.profesor');
+
+
+//semestre
+
+Route::get('/mostrar-semestre',[SemestreController::class,'show'])->name('cargar.semestre');
+
+Route::post('/mostrar-semestre',[SemestreController::class,'store'])->name('guardar.semestre');
+
+//Materias docentes
+
+Route::get('/mostrar-materias-docentes/{id}',[MateriasController::class,'mostrarmaterias'])->name('mostrar.materiasdocente');
 

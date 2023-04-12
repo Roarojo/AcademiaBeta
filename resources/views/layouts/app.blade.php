@@ -7,13 +7,37 @@
    @vite('resources/css/app.css')
   <title>@yield('titulo')</title>
 
+<!--Contador-->
+<style>
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .custom-number-input input:focus {
+    outline: none !important;
+  }
+
+  .custom-number-input button:focus {
+    outline: none !important;
+  }
+</style>
+
+<!--Fin del contador-->
+
+
+
 </head>
 <body class="bg-gray-100">
-<header class="p-5 border-b bg-white shadow">
-  <div class="container mx-auto flex justify-between p-2">
-     <h1 class="text-3xl font-black">
-        Laravel con Tailwind
-     </h1>
+<header class="p-2 border-b bg-white shadow">
+  <div class="container mx-auto flex justify-between p-1">
+    <div>
+      <img src="{{asset('imagenes/tecjaliscologo.png')}}" alt="Front of men&#039;s Basic Tee in black." class="mx-auto object-cover object-center">
+      <h3 class="text-2x1 font-black">
+        Repositorio Academia Informatica
+     </h3>
+    </div>
      @auth
         <nav class="flex gap-2 items-center">
       <!--Menu desplegable
@@ -35,6 +59,11 @@
             <a href="{{route('post.index')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Dashboard</a>
        
           </li>
+          <li>
+            
+            <a href="{{route('post.perfil',auth()->user()->id)}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Perfil</a>
+       
+          </li>
     
           <li>
             <a class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">
@@ -53,16 +82,16 @@
         </nav>
      @endauth
      
-     @guest
-        <nav class="flex gap-2 items-center">
+    <!-- @guest
+         <nav class="flex gap-1 items-center">
           <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('index') }}">
             Login
           </a>
-          <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('crear-cuenta') }}">
+        <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('crear-cuenta') }}">
             Crear Cuenta
         </a>
         </nav>
-     @endguest
+     @endguest-->
           
      
      
@@ -71,5 +100,7 @@
   @yield('contenido')
   @stack('scripts')
   <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+
+  @include('footer')
 </body>
 </html>
